@@ -110,8 +110,8 @@ int main(int argc, char *argv[]) {
   };
   auto magentaWriter = [](std::string msg) { std::cout << msg; };
 
-  /*  decoder.decode(
-            move(filename),
+   decoder.decode(
+               std::move(filename.toStdString()),
             {
                     .zeroBitRangeInMicroseconds = { zeroMinWidth, zeroMaxWidth
     }, .oneBitRangeInMicroseconds = { oneMinWidth, oneMaxWidth },
@@ -122,7 +122,7 @@ int main(int argc, char *argv[]) {
             normalWriter,
             printRaw ? magentaWriter : nullptr
     );
-    */
-  return 0;
+
+
   return app.exec();
 }
