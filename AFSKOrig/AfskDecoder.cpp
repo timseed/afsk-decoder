@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "audiofile/AudioFile.h"
+#include "AudioFile.h"
 
 #include "AfskDecoder.h"
 #include "ZeroCrossingDetector.h"

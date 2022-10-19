@@ -2,6 +2,7 @@
 #include "data_types.h"
 #include <QCommandLineParser>
 #include <QCoreApplication>
+#include <QFile>    // Check if it exists
 #include <iostream> // For cout
 
 int main(int argc, char *argv[]) {
@@ -89,6 +90,12 @@ int main(int argc, char *argv[]) {
 
   if (filename.length()) {
     std::cout << "File  Set as " << filename.toStdString() << std::endl;
+    if (!QFile::exists(filename))
+    {
+        std::cout << "Filedoes not exist";
+        exit(0);
+    }
+
   } else {
     parser.helpText();
     std::cout << "Filename Missing";
