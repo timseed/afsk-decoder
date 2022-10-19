@@ -90,10 +90,9 @@ int main(int argc, char *argv[]) {
 
   if (filename.length()) {
     std::cout << "File  Set as " << filename.toStdString() << std::endl;
-    if (!QFile::exists(filename))
-    {
-        std::cout << "Filedoes not exist";
-        exit(0);
+    if (!QFile::exists(filename)) {
+      std::cout << "Filedoes not exist";
+      exit(0);
     }
 
   } else {
@@ -110,19 +109,14 @@ int main(int argc, char *argv[]) {
   };
   auto magentaWriter = [](std::string msg) { std::cout << msg; };
 
-   decoder.decode(
-               std::move(filename.toStdString()),
-            {
-                    .zeroBitRangeInMicroseconds = { zeroMinWidth, zeroMaxWidth
-    }, .oneBitRangeInMicroseconds = { oneMinWidth, oneMaxWidth },
-            },
-            zcDetectResolution,
-            printInfo ? normalWriter : nullptr,
-            printErrors ? redWriter : nullptr,
-            normalWriter,
-            printRaw ? magentaWriter : nullptr
-    );
-
+  decoder.decode(std::move(filename.toStdString()),
+                 {
+                     .zeroBitRangeInMicroseconds = {zeroMinWidth, zeroMaxWidth},
+                     .oneBitRangeInMicroseconds = {oneMinWidth, oneMaxWidth},
+                 },
+                 zcDetectResolution, printInfo ? normalWriter : nullptr,
+                 printErrors ? redWriter : nullptr, normalWriter,
+                 printRaw ? magentaWriter : nullptr);
 
   return app.exec();
 }
